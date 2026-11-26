@@ -269,3 +269,42 @@ box-shadow: 0 4px 14px rgba(0,0,0,.25);
 }
 .toast.ok { background: var(--verde); }
 .toast.error { background: var(--rojo); }
+
+/* ---------- v2: secciones, buscador, NAP, faltantes ---------- */
+select { background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235b6b78' stroke-width='2'><polyline points='6 9 12 15 18 9'/></svg>"); }
+.mini { font-size: .78rem; color: var(--texto-suave); font-weight: 500; }
+.seccion { font-size: 1rem; margin: 1.6rem 0 .8rem; color: var(--azul); border-top: 1px solid var(--gris-borde); padding-top: 1rem; }
+input[type=tel], input[type=date], input[type=time] {
+  width: 100%; padding: .75rem .8rem; font-size: 1rem; border: 1.5px solid var(--gris-borde);
+  border-radius: 10px; background: #fff; color: var(--texto); font-family: inherit;
+}
+.campo.falta label { color: var(--rojo); }
+.campo.falta input, .campo.falta select, .campo.falta textarea, .campo.falta .foto-box, .campo.falta .gps-box { border-color: var(--rojo); }
+
+.contrato-box { position: relative; }
+.contrato-resultados {
+  background: #fff; border: 1.5px solid var(--gris-borde); border-radius: 10px;
+  margin-top: .35rem; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,.08);
+}
+.contrato-op {
+  display: flex; flex-direction: column; align-items: flex-start; gap: .15rem; width: 100%;
+  padding: .7rem .85rem; border: none; border-bottom: 1px solid var(--gris-borde);
+  background: #fff; font-size: .95rem; text-align: left; color: var(--texto);
+}
+.contrato-op:last-child { border-bottom: none; }
+.contrato-op:active { background: var(--gris); }
+.contrato-op.nuevo { background: #eef6fb; }
+.contrato-vacio { padding: .7rem .85rem; font-size: .85rem; color: var(--texto-suave); }
+.contrato-elegido {
+  display: flex; justify-content: space-between; align-items: center; gap: .6rem;
+  background: #eaf6ef; border: 1.5px solid var(--verde); border-radius: 10px; padding: .65rem .85rem;
+}
+.contrato-elegido .btn-mini { background: #fff; border: 1px solid var(--gris-borde); color: var(--texto); }
+
+.nap-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: .5rem; }
+.nap-grid .mini { display: block; margin-bottom: .2rem; }
+.nap-grid select { padding-left: .6rem; padding-right: 1.6rem; background-position: right .4rem center; }
+.nap-grid select:disabled { background-color: var(--gris); color: #999; }
+
+.foto-botones { flex-wrap: wrap; }
+.foto-botones .btn-foto { min-width: 30%; }
