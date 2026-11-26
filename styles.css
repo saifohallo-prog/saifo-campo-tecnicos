@@ -308,3 +308,24 @@ input[type=tel], input[type=date], input[type=time] {
 
 .foto-botones { flex-wrap: wrap; }
 .foto-botones .btn-foto { min-width: 30%; }
+
+/* ---------- v3: identidad HALLO ---------- */
+:root {
+  --azul: #DA662B;        /* naranja HALLO (color principal) */
+  --azul-claro: #3D4148;  /* gris carbón para botones secundarios */
+  --naranja-oscuro: #B8501D;
+  --gris: #FBF6F2;
+  --gris-borde: #E8DDD5;
+}
+.topbar { padding-top: calc(env(safe-area-inset-top, 0px) + .7rem); padding-bottom: .7rem; }
+.topbar .logo { height: 38px; width: auto; display: block; flex-shrink: 0; }
+.topbar h1 { font-size: .98rem; font-weight: 600; opacity: .95; border-left: 1px solid rgba(255,255,255,.45); padding-left: .65rem; }
+.home-btn.verde { background: linear-gradient(160deg, #E8773A, #C9561F); }
+.home-btn.rojo { background: linear-gradient(160deg, #A8411C, #7C2B11); }
+.home-btn.amarillo { background: linear-gradient(160deg, #D8962B, #B0721A); }
+.home-btn.azul { background: linear-gradient(160deg, #4B5058, #2E3237); }
+.btn-enviar { background: var(--azul); }
+.btn-enviar:active { background: var(--naranja-oscuro); }
+.seccion { color: var(--naranja-oscuro); }
+input:focus, textarea:focus, select:focus { outline: 2px solid var(--azul); border-color: var(--azul); }
+.contrato-op.nuevo { background: #FDF0E8; }
