@@ -2,8 +2,8 @@
 // Estrategia: primero la red (para que siempre llegue la última versión) y,
 // si no hay señal, lo guardado. Las llamadas al Apps Script nunca se guardan.
 
-const CACHE = "saifo-campo-v2";
-const ARCHIVOS = ["./", "./index.html", "./styles.css", "./app.js", "./config.js", "./manifest.json"];
+const CACHE = "saifo-campo-v3";
+const ARCHIVOS = ["./", "./index.html", "./styles.css", "./app.js", "./config.js", "./manifest.json", "./icons/hallo-logo.svg"];
 
 self.addEventListener("install", event => {
   event.waitUntil(caches.open(CACHE).then(c => c.addAll(ARCHIVOS)).then(() => self.skipWaiting()));
