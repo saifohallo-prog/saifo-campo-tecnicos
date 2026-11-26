@@ -1,15 +1,16 @@
 {
-"name": "SAIFO — Registro de campo",
-"short_name": "SAIFO Campo",
-"description": "App para que los tecnicos de SAIFO (HALLO La Libertad) registren instalaciones, retiros, soporte y recorridos de venta con foto y GPS.",
-"start_url": "./index.html",
-"scope": "./",
-"display": "standalone",
-"orientation": "portrait",
-"background_color": "#f4f6f8",
-"theme_color": "#0f3d57",
-"icons": [
-{ "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
-{ "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
-]
+  "name": "HALLO — Registro de campo",
+  "short_name": "HALLO Campo",
+  "description": "App para que los técnicos de SAIFO (HALLO La Libertad) registren instalaciones, retiros, soporte y recorridos de venta con foto y GPS.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FBF6F2",
+  "theme_color": "#DA662B",
+  "icons": [
+    { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
 }
