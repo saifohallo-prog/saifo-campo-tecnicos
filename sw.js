@@ -1,38 +1,33 @@
-// Service worker mínimo: deja la app (HTML/CSS/JS) disponible sin señal.
-// Las llamadas al Apps Script (catálogos y envíos) siempre van a la red:
-// eso lo maneja app.js con su propia cola local, no este archivo.
+// Service worker: deja la app disponible sin señal.
+// Estrategia: primero la red (para que siempre llegue la última versión) y,
+// si no hay señal, lo guardado. Las llamadas al Apps Script nunca se guardan.
 
-const CACHE = "saifo-campo-v1";
-const ARCHIVOS = [
-"./",
-"./index.html",
-"./styles.css",
-"./app.js",
-"./config.js",
-"./manifest.json"
-];
+const CACHE = "saifo-campo-v2";
+const ARCHIVOS = ["./", "./index.html", "./styles.css", "./app.js", "./config.js", "./manifest.json"];
 
 self.addEventListener("install", event => {
-event.waitUntil(
-caches.open(CACHE).then(cache => cache.addAll(ARCHIVOS)).then(() => self.skipWaiting())
-);
+  event.waitUntil(caches.open(CACHE).then(c => c.addAll(ARCHIVOS)).then(() => self.skipWaiting()));
 });
 
 self.addEventListener("activate", event => {
-event.waitUntil(
-caches.keys().then(nombres =>
-Promise.all(nombres.filter(n => n !== CACHE).map(n => caches.delete(n)))
-).then(() => self.clients.claim())
-);
+  event.waitUntil(
+    caches.keys()
+      .then(nombres => Promise.all(nombres.filter(n => n !== CACHE).map(n => caches.delete(n))))
+      .then(() => self.clients.claim())
+  );
 });
 
 self.addEventListener("fetch", event => {
-const url = new URL(event.request.url);
-// Nunca cachear llamadas al backend (Apps Script / google.com): siempre red.
-if (url.origin.indexOf("google.com") !== -1 || url.origin.indexOf("googleusercontent") !== -1) {
-return;
-}
-event.respondWith(
-caches.match(event.request).then(cached => cached || fetch(event.request))
-);
+  if (event.request.method !== "GET") return;
+  const url = new URL(event.request.url);
+  if (url.origin !== self.location.origin) return;
+  event.respondWith(
+    fetch(event.request)
+      .then(res => {
+        const copia = res.clone();
+        caches.open(CACHE).then(c => c.put(event.request, copia));
+        return res;
+      })
+      .catch(() => caches.match(event.request, { ignoreSearch: true }))
+  );
 });
